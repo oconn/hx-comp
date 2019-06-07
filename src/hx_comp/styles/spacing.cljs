@@ -1,0 +1,22 @@
+(ns hx-comp.styles.spacing)
+
+(def spacing
+  {:p0 "0"
+   :p1 "1px"
+   :p2 "2px"
+   :p4 "4px"
+   :p8 "8px"
+   :p12 "12px"
+   :p16 "16px"
+   :p20 "20px"
+   :p24 "24px"
+   :p28 "28px"
+   :p32 "32px"
+   :p36 "36px"
+   :p40 "40px"
+   :p44 "44px"
+   :p48 "48px"
+   :p52 "52px"
+   :p56 "56px"
+   :p60 "60px"
+   :p64 "64px"})
