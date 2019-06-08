@@ -8,6 +8,7 @@
    [hx-comp.styles.borders :as borders]
    [hx-comp.styles.media-queries :as media-queries]
    [hx-comp.styles.radius :as radius]
+   [hx-comp.styles.resets :as resets]
    [hx-comp.styles.shadows :as shadows]
    [hx-comp.styles.spacing :as spacing]
    [hx-comp.styles.typography :as typography]))
@@ -85,9 +86,7 @@
                        :spacing spacing/spacing})
 
 (styles->classes
- {"@global"
-  (merge
-   {})})
+ {"@global" resets/resets})
 
 (defn gs
   "Pulls a styles from global-styles. If no style exists in the style

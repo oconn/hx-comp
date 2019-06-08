@@ -4,12 +4,12 @@
   https://material.io/guidelines/style/typography.html#typography-styles")
 
 (def line-height
-  {:display-20 "1.2em"
-   :display-10 "1.0em"
-   :title-40 "1.2em"
-   :title-30 "1.2em"
-   :title-20 "1.2em"
-   :title-10 "1.2em"
+  {:display-20 "2em"
+   :display-10 "2em"
+   :title-40 "2em"
+   :title-30 "2em"
+   :title-20 "2em"
+   :title-10 "2em"
    :body-30 "1.8em"
    :body-20 "1.8em"
    :body-10 "1.8em"
@@ -96,20 +96,6 @@
    :caption-30 700
    :caption-20 400
    :caption-10 400})
-
-(def margin
-  {:display-20 "1em"
-   :display-10 "1em"
-   :title-40 "1em"
-   :title-30 "1em"
-   :title-20 "1em"
-   :title-10 "1em"
-   :body-30 "1em"
-   :body-20 "1em"
-   :body-10 "1em"
-   :caption-30 "0.2em"
-   :caption-20 "0.2em"
-   :caption-10 "0.2em"})
 
 (defn font-families
   [{:keys [primary-font secondary-font]}]
