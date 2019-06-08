@@ -1,0 +1,16 @@
+^{:open-file-command "emacs"
+  :ring-handler clj.server/handler
+  :ring-server-options {:port 3449}
+  :extra-main-files {:devcards {:main hx-comp.devcards}}
+  :watch-dirs ["src"]}
+{:main hx-comp.core
+ :devcards true
+ :npm-deps false
+ :externs ["src/js/externs/react/react.ext.js"
+           "src/js/externs/jss/jss.ext.js"]
+ :foreign-libs [{:file "dist/index.bundle.js"
+                 :provides ["jss" "jss-preset-default" "react" "react-dom"]
+                 :global-exports {jss jss
+                                  jss-preset-default jssPresetDefault
+                                  react React
+                                  react-dom ReactDOM}}]}

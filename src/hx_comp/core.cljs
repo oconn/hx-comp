@@ -8,12 +8,16 @@
    [hx-comp.styles.borders :as borders]
    [hx-comp.styles.media-queries :as media-queries]
    [hx-comp.styles.radius :as radius]
+   [hx-comp.styles.shadows :as shadows]
    [hx-comp.styles.spacing :as spacing]
    [hx-comp.styles.typography :as typography]))
 
 ;; TODO Allow for an arbitrary list of colors to be added at build time
 (goog-define primary-color "#76ae47")
 (goog-define secondary-color "#5d82d2")
+
+(goog-define primary-font "'Open Sans', sans-serif")
+(goog-define secondary-font "'Roboto Mono', monospace")
 
 (js-invoke jss "setup" (jss-preset-default))
 
@@ -69,12 +73,15 @@
 
 (reset! global-styles {:borders (borders/borders colors)
                        :colors colors
-                       :font-family typography/font-families
+                       :font-family (typography/font-families
+                                     {:primary-font primary-font
+                                      :secondary-font secondary-font})
                        :font-height typography/line-height
                        :font-size typography/size
                        :font-weight typography/weight
                        :queries media-queries/queries
                        :radius radius/radius
+                       :shadows shadows/shadows
                        :spacing spacing/spacing})
 
 (styles->classes

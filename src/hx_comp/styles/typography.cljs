@@ -111,6 +111,7 @@
    :caption-20 "0.2em"
    :caption-10 "0.2em"})
 
-(def font-families
-  {:primary "'Open Sans', sans-serif"
-   :secondary "'Roboto Mono', monospace"})
+(defn font-families
+  [{:keys [primary-font secondary-font]}]
+  {:primary primary-font
+   :secondary secondary-font})
