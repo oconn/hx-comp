@@ -1,12 +1,12 @@
 (ns hx-comp.base.text
   (:require
-   [devcards.core :as dc :include-macros true]
-
    [hx.react :as hx :refer [defnc]]
    [hx-comp.core :refer [styles->classes
                          gs
                          add-class
-                         create-font-styles]]))
+                         create-font-styles]])
+  (:require-macros
+   [devcards.core :as dc]))
 
 (def text-styles
   (reduce
