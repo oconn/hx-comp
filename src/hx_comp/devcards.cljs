@@ -1,5 +1,6 @@
 (ns hx-comp.devcards
-  (:require [devcards.core :as dc :include-macros true]
+  (:require
+   [devcards.core]
 
    [hx-comp.base.button]
    [hx-comp.base.link]

@@ -6,7 +6,7 @@
                          add-class
                          create-font-styles]])
   (:require-macros
-   [devcards.core :as dc :refer [defcard deftest]]))
+   [devcards.core :refer [defcard]]))
 
 (def base-button-styles
   (merge
@@ -98,11 +98,11 @@
 (defnc SecondaryLinkButtonAlt [options]
   [:a (add-class options :secondary-link-button-alt classes)])
 
-(dc/defcard PrimaryButton
+(defcard PrimaryButton
   (hx/f [PrimaryButton {} "Button"]))
-(dc/defcard PrimaryButtonAlt
+(defcard PrimaryButtonAlt
   (hx/f [PrimaryButtonAlt {} "Button"]))
-(dc/defcard SecondaryButton
+(defcard SecondaryButton
   (hx/f [SecondaryButton {} "Button"]))
-(dc/defcard SecondaryButtonAlt
+(defcard SecondaryButtonAlt
   (hx/f [SecondaryButtonAlt {} "Button"]))

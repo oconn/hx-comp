@@ -4,7 +4,7 @@
 
    [hx-comp.core :refer [gs styles->classes add-class create-font-styles]])
   (:require-macros
-   [devcards.core :as dc]))
+   [devcards.core :refer [defcard]]))
 
 (def base-link-styles
   {:white-space :nowrap
@@ -27,10 +27,24 @@
                           :color :primary-500
                           :family :primary})
      {"&:hover"
+      {:color (gs [:colors :primary-700])}})
+    :secondary-link
+    (merge
+     base-link-styles
+     (create-font-styles {:style :caption-30
+                          :color :primary-500
+                          :family :secondary})
+     {"&:hover"
       {:color (gs [:colors :primary-700])}})}))
 
 (defnc PrimaryLink [options]
   [:a (add-class options :primary-link classes)])
 
-(dc/defcard PrimaryLink
+(defnc SecondaryLink [options]
+  [:a (add-class options :secondary-link classes)])
+
+(defcard PrimaryLink
   (hx/f [PrimaryLink {:href "/"} "Link"]))
+
+(defcard SecondaryLink
+  (hx/f [SecondaryLink {:href "/"} "Link"]))

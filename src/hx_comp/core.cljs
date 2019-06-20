@@ -47,24 +47,26 @@
   (if (color/isValidColor color-value)
     (letfn [(scale->name [scale]
               (keyword (str color-name "-" scale)))]
-      {(scale->name "50") (lighten color-value 0.5)
-       (scale->name "100") (lighten color-value 0.4)
-       (scale->name "200") (lighten color-value 0.3)
-       (scale->name "300") (lighten color-value 0.2)
-       (scale->name "400") (lighten color-value 0.1)
+      {(scale->name "25") (lighten color-value 0.9)
+       (scale->name "50") (lighten color-value 0.75)
+       (scale->name "100") (lighten color-value 0.6)
+       (scale->name "200") (lighten color-value 0.45)
+       (scale->name "300") (lighten color-value 0.3)
+       (scale->name "400") (lighten color-value 0.15)
        (scale->name "500") color-value
-       (scale->name "600") (darken color-value 0.1)
-       (scale->name "700") (darken color-value 0.2)
-       (scale->name "800") (darken color-value 0.3)
-       (scale->name "900") (darken color-value 0.4)
-       (scale->name "1000") (darken color-value 0.5)})
+       (scale->name "600") (darken color-value 0.15)
+       (scale->name "700") (darken color-value 0.3)
+       (scale->name "800") (darken color-value 0.45)
+       (scale->name "900") (darken color-value 0.6)
+       (scale->name "1000") (darken color-value 0.75)
+       (scale->name "1100") (darken color-value 0.90)})
     (do
       (js/console.error (str "Color not valid: '" color-value "'"))
       {})))
 
 (def colors (merge
              {:true-white "#FFFFFF"
-              :true-black "#FFFFFF"}
+              :true-black "#000000"}
              (create-color-scale {:color-name "primary"
                                   :color-value primary-color})
              (create-color-scale {:color-name "secondary"
@@ -72,18 +74,19 @@
              (create-color-scale {:color-name "gray-scale"
                                   :color-value "#717171"})))
 
-(reset! global-styles {:borders (borders/borders colors)
-                       :colors colors
-                       :font-family (typography/font-families
-                                     {:primary-font primary-font
-                                      :secondary-font secondary-font})
-                       :font-height typography/line-height
-                       :font-size typography/size
-                       :font-weight typography/weight
-                       :queries media-queries/queries
-                       :radius radius/radius
-                       :shadows shadows/shadows
-                       :spacing spacing/spacing})
+(reset! global-styles
+        {:borders (borders/borders colors)
+         :colors colors
+         :font-family (typography/font-families
+                       {:primary-font primary-font
+                        :secondary-font secondary-font})
+         :font-height typography/line-height
+         :font-size typography/size
+         :font-weight typography/weight
+         :queries media-queries/queries
+         :radius radius/radius
+         :shadows shadows/shadows
+         :spacing spacing/spacing})
 
 (styles->classes
  {"@global" resets/resets})
