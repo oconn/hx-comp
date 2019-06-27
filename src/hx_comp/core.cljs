@@ -20,6 +20,8 @@
 (goog-define primary-font "'Open Sans', sans-serif")
 (goog-define secondary-font "'Roboto Mono', monospace")
 
+(goog-define extend-colors "{}")
+
 (js-invoke jss "setup" (jss-preset-default))
 
 (def ^{:private true} global-styles (atom {}))
@@ -72,7 +74,15 @@
              (create-color-scale {:color-name "secondary"
                                   :color-value secondary-color})
              (create-color-scale {:color-name "gray-scale"
-                                  :color-value "#717171"})))
+                                  :color-value "#717171"})
+             ;; Allows for compile time extension of the color pallet
+             (reduce
+              (fn [acc [color-name color-value]]
+                (merge acc (create-color-scale
+                            {:color-name color-name
+                             :color-value color-value})))
+              {}
+              (js->clj (.parse js/JSON extend-colors)))))
 
 (reset! global-styles
         {:borders (borders/borders colors)

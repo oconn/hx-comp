@@ -18,6 +18,10 @@
    {:color (gs [:colors :gray-scale-300])
     :cursor :default}})
 
+(def button-reset-styles
+  {:background :none
+   :border :none})
+
 (def classes
   (styles->classes
    {:primary-link
@@ -28,6 +32,7 @@
                           :family :primary})
      {"&:hover"
       {:color (gs [:colors :primary-700])}})
+
     :secondary-link
     (merge
      base-link-styles
@@ -35,16 +40,39 @@
                           :color :primary-500
                           :family :secondary})
      {"&:hover"
-      {:color (gs [:colors :primary-700])}})}))
+      {:color (gs [:colors :primary-700])}})
+
+    :primary-button-link
+    (merge
+     base-link-styles
+     button-reset-styles
+     (create-font-styles {:style :body-20
+                          :color :primary-500
+                          :family :primary}))
+
+    :secondary-button-link
+    (merge
+     base-link-styles
+     button-reset-styles
+     (create-font-styles {:style :body-20
+                          :color :primary-500
+                          :family :secondary}))}))
 
 (defnc PrimaryLink [options]
   [:a (add-class options :primary-link classes)])
-
 (defnc SecondaryLink [options]
   [:a (add-class options :secondary-link classes)])
 
+(defnc PrimaryButtonLink [options]
+  [:button (add-class options :primary-button-link classes)])
+(defnc SecondaryButtonLink [options]
+  [:button (add-class options :secondary-button-link classes)])
+
 (defcard PrimaryLink
   (hx/f [PrimaryLink {:href "/"} "Link"]))
-
 (defcard SecondaryLink
   (hx/f [SecondaryLink {:href "/"} "Link"]))
+(defcard PrimaryButtonLink
+  (hx/f [PrimaryButtonLink {:on-click #()} "Button Link"]))
+(defcard SecondaryButtonLink
+  (hx/f [SecondaryButtonLink {:on-click #()} "Button Link"]))
