@@ -1,12 +1,18 @@
 {:deps {lilactown/hx {:mvn/version "0.5.2"}
         org.clojure/clojurescript {:mvn/version "1.10.520"}
 
+        ;; Dev
         com.bhauman/figwheel-main {:mvn/version "0.2.0"}
-        com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}
-        devcards {:mvn/version "0.2.6"
-                  :exclude [cljsjs/react
-                            cljsjs/react-dom]}}
+        com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}}
  :paths ["src" "resources" "target"]
  :aliases {:dev {:main-opts ["--main" "figwheel.main"
                              "--build" "dev"
-                             "--repl"]}}}
+                             "--repl"]}
+
+           :pack
+           {:main-opts
+            ["-m" "mach.pack.alpha.skinny" "--no-libs" "--project-path" "app.jar"]
+
+            :extra-deps
+            {pack/pack.alpha {:git/url "https://github.com/juxt/pack.alpha.git"
+                              :sha "2769a6224bfb938e777906ea311b3daf7d2220f5"}}}}}

@@ -2,7 +2,6 @@
   (:require
    [goog.color :as color]
    [goog.object :as gobj]
-   [jss]
    [jss-preset-default]
 
    [hx-comp.styles.borders :as borders]
@@ -22,7 +21,14 @@
 
 (goog-define extend-colors "{}")
 
-(js-invoke jss "setup" (jss-preset-default))
+(def jss (gobj/getValueByKeys js/window
+                              "jss"
+                              "default"))
+
+(if (and (some? jss)
+         (some? jss-preset-default))
+  (js-invoke jss "setup" (jss-preset-default))
+  (js/console.error "JSS Dependencies not found"))
 
 (def ^{:private true} global-styles (atom {}))
 
@@ -38,11 +44,15 @@
 
 (defn styles->classes
   [styles]
-  (-> jss
-      (js-invoke "createStyleSheet" (clj->js styles))
-      (js-invoke "attach")
-      (gobj/get "classes")
-      (js->clj :keywordize-keys true)))
+  (let [js-styles (try (clj->js styles)
+                       (catch js/Error e
+                         (js/console.error "Failed to parse styles: " e)))]
+    (when (some? js-styles)
+      (-> jss
+          (js-invoke "createStyleSheet" js-styles)
+          (js-invoke "attach")
+          (gobj/get "classes")
+          (js->clj :keywordize-keys true)))))
 
 (defn create-color-scale
   [{:keys [color-name color-value]}]
@@ -107,10 +117,9 @@
   [lens]
   (let [style (get-in @global-styles
                       lens
-                      (js/Error. #js {:message "Style not found"
-                                      :data lens}))]
+                      (js/Error. "Style not found"))]
     (if (= (type style) js/Error)
-      (js/console.error style lens)
+      (js/console.error style (clj->js lens))
       style)))
 
 (defn create-font-styles

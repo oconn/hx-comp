@@ -2,9 +2,7 @@
   (:require
    [hx.react :as hx :refer [defnc]]
 
-   [hx-comp.core :refer [gs styles->classes add-class create-font-styles]])
-  (:require-macros
-   [devcards.core :refer [defcard]]))
+   [hx-comp.core :refer [gs styles->classes add-class create-font-styles]]))
 
 (def base-link-styles
   {:white-space :nowrap
@@ -67,12 +65,3 @@
   [:button (add-class options :primary-button-link classes)])
 (defnc SecondaryButtonLink [options]
   [:button (add-class options :secondary-button-link classes)])
-
-(defcard PrimaryLink
-  (hx/f [PrimaryLink {:href "/"} "Link"]))
-(defcard SecondaryLink
-  (hx/f [SecondaryLink {:href "/"} "Link"]))
-(defcard PrimaryButtonLink
-  (hx/f [PrimaryButtonLink {:on-click #()} "Button Link"]))
-(defcard SecondaryButtonLink
-  (hx/f [SecondaryButtonLink {:on-click #()} "Button Link"]))

@@ -1,9 +1,7 @@
 (ns hx-comp.base.container
   (:require
    [hx.react :as hx :refer [defnc]]
-   [hx-comp.core :refer [gs styles->classes add-class]])
-  (:require-macros
-   [devcards.core :refer [defcard]]))
+   [hx-comp.core :refer [gs styles->classes add-class]]))
 
 (def classes
   (styles->classes
@@ -17,9 +15,3 @@
   [{:keys [children] :as options}]
   [:div (add-class {} :container classes)
    children])
-
-(defcard Container
-  (hx/f [Container {}
-         [:div
-          [:h1 "Title"]
-          [:p "Body"]]]))

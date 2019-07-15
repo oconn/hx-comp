@@ -4,9 +4,7 @@
    [hx-comp.core :refer [gs
                          styles->classes
                          add-class
-                         create-font-styles]])
-  (:require-macros
-   [devcards.core :refer [defcard]]))
+                         create-font-styles]]))
 
 (def base-button-styles
   (merge
@@ -44,8 +42,7 @@
 (def primary-link-button-styles
   (merge
    primary-button-styles
-   ;; TODO Devcards overrides this value
-   {:color (str (gs [:colors :true-white]) " !important")
+   {:color (gs [:colors :true-white])
     :padding [(gs [:spacing :p12])
               (gs [:spacing :p20])]}))
 
@@ -97,12 +94,3 @@
   [:a (add-class options :secondary-link-button classes)])
 (defnc SecondaryLinkButtonAlt [options]
   [:a (add-class options :secondary-link-button-alt classes)])
-
-(defcard PrimaryButton
-  (hx/f [PrimaryButton {} "Button"]))
-(defcard PrimaryButtonAlt
-  (hx/f [PrimaryButtonAlt {} "Button"]))
-(defcard SecondaryButton
-  (hx/f [SecondaryButton {} "Button"]))
-(defcard SecondaryButtonAlt
-  (hx/f [SecondaryButtonAlt {} "Button"]))
