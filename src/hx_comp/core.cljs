@@ -2,6 +2,7 @@
   (:require
    [goog.color :as color]
    [goog.object :as gobj]
+   [jss]
    [jss-preset-default]
 
    [hx-comp.styles.borders :as borders]
@@ -21,9 +22,9 @@
 
 (goog-define extend-colors "{}")
 
-(def jss (gobj/getValueByKeys js/window
-                              "jss"
-                              "default"))
+#_(def jss (gobj/getValueByKeys js/window
+                                "jss"
+                                "default"))
 
 (if (and (some? jss)
          (some? jss-preset-default))
