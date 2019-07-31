@@ -24,9 +24,9 @@
     :border (gs [:borders :border-primary-500-2])
 
     "&:disabled"
-    {:background-color (gs [:colors :gray-scale-50])
+    {:background-color (gs [:colors :gray-scale-25])
      :color (gs [:colors :gray-scale-300])
-     :border (gs [:borders :border-100-2])
+     :border (gs [:borders :border-50-2])
      :cursor :default}}))
 
 (def primary-button-styles
