@@ -2,7 +2,8 @@
 
 (def resets
   {"html"
-   {:box-sizing :border-box}
+   {:box-sizing :border-box
+    :scroll-behavior "smooth"}
 
    "*"
    {:box-sizing :inherit
