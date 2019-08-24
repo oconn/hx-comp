@@ -22,10 +22,6 @@
 
 (goog-define extend-colors "{}")
 
-#_(def jss (gobj/getValueByKeys js/window
-                                "jss"
-                                "default"))
-
 (if (and (some? jss)
          (some? jss-preset-default))
   (js-invoke jss "setup" (jss-preset-default))

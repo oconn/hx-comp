@@ -25,7 +25,7 @@
    {:primary-link
     (merge
      base-link-styles
-     (create-font-styles {:style :caption-30
+     (create-font-styles {:style :caption-20
                           :color :primary-500
                           :family :primary})
      {"&:hover"
@@ -34,7 +34,7 @@
     :secondary-link
     (merge
      base-link-styles
-     (create-font-styles {:style :caption-30
+     (create-font-styles {:style :caption-20
                           :color :primary-500
                           :family :secondary})
      {"&:hover"
@@ -44,7 +44,7 @@
     (merge
      base-link-styles
      button-reset-styles
-     (create-font-styles {:style :body-20
+     (create-font-styles {:style :caption-20
                           :color :primary-500
                           :family :primary}))
 
@@ -52,7 +52,7 @@
     (merge
      base-link-styles
      button-reset-styles
-     (create-font-styles {:style :body-20
+     (create-font-styles {:style :caption-20
                           :color :primary-500
                           :family :secondary}))}))
 
