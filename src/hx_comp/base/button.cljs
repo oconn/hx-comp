@@ -11,6 +11,7 @@
    (create-font-styles {:style :caption-30
                         :color :primary-500
                         :family :primary})
+   (gs [:shadows :outline])
    {:padding [(gs [:spacing :p8])
               (gs [:spacing :p20])]
     :white-space :nowrap

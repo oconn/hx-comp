@@ -102,7 +102,7 @@
          :font-weight typography/weight
          :queries media-queries/queries
          :radius radius/radius
-         :shadows shadows/shadows
+         :shadows (shadows/shadows colors)
          :spacing spacing/spacing})
 
 (styles->classes
