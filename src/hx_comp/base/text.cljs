@@ -12,7 +12,11 @@
      (merge acc {(or (:alias font)
                      (:style font))
                  (create-font-styles font)}))
-   {}
+   {:text-container
+    {:max-width "650px"
+     :margin :auto
+     :padding [(gs [:spacing :p20])
+               (gs [:spacing :p12])]}}
    [{:style :display-20 :color :gray-scale-800 :family :primary}
     {:style :display-10 :color :gray-scale-800 :family :primary}
     {:style :title-40   :color :gray-scale-800 :family :primary}
@@ -107,6 +111,11 @@
   [tag (transform-options options :caption-20-alt)])
 (defnc Caption10Alt [{:keys [tag] :as options :or {tag :p}}]
   [tag (transform-options options :caption-10-alt)])
+
+(defnc TextContainer
+  [{:keys [children]}]
+  [:div (add-class {} :text-container classes)
+   children])
 
 (defonce test-sentance
   (str "Typography is the process of using type to print onto a page, "
