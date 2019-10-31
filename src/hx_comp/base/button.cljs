@@ -90,7 +90,7 @@
 (defnc PrimaryLinkButton [options]
   [:a (add-class options :primary-button classes)])
 (defnc PrimaryLinkButtonAlt [options]
-  [:a (add-class options :primary-button classes)])
+  [:a (add-class options :primary-button-alt classes)])
 (defnc SecondaryLinkButton [options]
   [:a (add-class options :secondary-link-button classes)])
 (defnc SecondaryLinkButtonAlt [options]
