@@ -53,7 +53,8 @@
    {:background-color (gs [:colors :true-white])
 
     "&:hover"
-    {:background-color (gs [:colors :primary-500])
+    {:background-color (gs [:colors :primary-600])
+     :border-color (gs [:colors :primary-600])
      :color (gs [:colors :true-white])}}))
 
 (def secondary-link-button-styles
@@ -62,30 +63,89 @@
    {:padding [(gs [:spacing :p12])
               (gs [:spacing :p20])]}))
 
+(def primary-warning-button-styles
+  (merge
+   base-button-styles
+   {:background-color (gs [:colors :error-500])
+    :color (gs [:colors :true-white])
+    :border (str "2px solid " (gs [:colors :error-500]))
+
+    "&:hover"
+    {:background-color (gs [:colors :error-600])
+     :border-color (gs [:colors :error-600])}}))
+
+(def secondary-warning-button-styles
+  (merge
+   base-button-styles
+   {:background-color (gs [:colors :true-white])
+    :border (str "2px solid " (gs [:colors :error-500]))
+    :color (gs [:colors :error-500])
+
+    "&:hover"
+    {:background-color (gs [:colors :error-600])
+     :border-color (gs [:colors :error-600])
+     :color (gs [:colors :true-white])}}))
+
 (def classes
   (styles->classes
    {:primary-button primary-button-styles
-    :primary-button-alt (assoc primary-button-styles
-                               :font-family (gs [:font-family :secondary]))
-    :primary-link-button primary-link-button-styles
-    :primary-link-button-alt (assoc primary-link-button-styles
-                                    :font-family (gs [:font-family :secondary]))
-    :secondary-button secondary-button-styles
-    :secondary-button-alt (assoc secondary-button-styles
-                                 :font-family (gs [:font-family :secondary]))
-    :secondary-link-button secondary-link-button-styles
-    :secondary-link-button-alt (assoc secondary-link-button-styles
-                                      :font-family
-                                      (gs [:font-family :secondary]))}))
+
+    :primary-button-alt
+    (assoc primary-button-styles
+           :font-family (gs [:font-family :secondary]))
+
+    :primary-warning-button
+    primary-warning-button-styles
+
+    :primary-warning-button-alt
+    (assoc primary-warning-button-styles
+           :font-family (gs [:font-family :secondary]))
+
+    :primary-link-button
+    primary-link-button-styles
+
+    :primary-link-button-alt
+    (assoc primary-link-button-styles
+           :font-family (gs [:font-family :secondary]))
+
+    :secondary-button
+    secondary-button-styles
+
+    :secondary-button-alt
+    (assoc secondary-button-styles
+           :font-family (gs [:font-family :secondary]))
+
+    :secondary-warning-button
+    secondary-warning-button-styles
+
+    :secondary-warning-button-alt
+    (assoc secondary-warning-button-styles
+           :font-family (gs [:font-family :secondary]))
+
+    :secondary-link-button
+    secondary-link-button-styles
+
+    :secondary-link-button-alt
+    (assoc secondary-link-button-styles
+           :font-family
+           (gs [:font-family :secondary]))}))
 
 (defnc PrimaryButton [options]
   [:button (add-class options :primary-button classes)])
 (defnc PrimaryButtonAlt [options]
   [:button (add-class options :primary-button-alt classes)])
+(defnc PrimaryWarningButton [options]
+  [:button (add-class options :primary-warning-button classes)])
+(defnc PrimaryWarningButtonAlt [options]
+  [:button (add-class options :primary-warning-button-alt classes)])
 (defnc SecondaryButton [options]
   [:button (add-class options :secondary-button classes)])
 (defnc SecondaryButtonAlt [options]
   [:button (add-class options :secondary-button-alt classes)])
+(defnc SecondaryWarningButton [options]
+  [:button (add-class options :secondary-warning-button classes)])
+(defnc SecondaryWarningButtonAlt [options]
+  [:button (add-class options :secondary-warning-button-alt classes)])
 
 (defnc PrimaryLinkButton [options]
   [:a (add-class options :primary-button classes)])
